@@ -1,0 +1,1 @@
+export 'models/firebase_model.dart';
