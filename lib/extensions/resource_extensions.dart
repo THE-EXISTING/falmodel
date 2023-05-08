@@ -26,6 +26,6 @@ extension ResourceExtension<T extends BlocState> on Stream<T> {
   }
 
   Stream<BlocState<S>> mapToResource<S>(S? Function(T resource) convert) {
-    return map((resource) => resource.transformData(convert(resource)));
+    return map((resource) => resource.copyData(convert(resource)));
   }
 }

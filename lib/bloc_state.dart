@@ -62,7 +62,7 @@ class BlocState<T> with EquatableMixin {
   @override
   bool get stringify => true;
 
-  BlocState<A> transformData<A>(A? newData) {
+  BlocState<A> copyData<A>(A? newData) {
     return BlocState._(
       data: newData,
       status: status,
@@ -72,14 +72,11 @@ class BlocState<T> with EquatableMixin {
     );
   }
 
-  BlocState<T> copy(
-    T? Function(T? oldData) builder, {
-    BlocStatus? status,
-  }) {
-    final newData = builder(data);
+  BlocState<S> mapData<S>(S? Function(T? data) convert) {
+    final newData = convert(data);
     return BlocState._(
       data: newData,
-      status: status ?? this.status,
+      status: status,
       message: message,
       error: error,
       stackTrace: stackTrace,
