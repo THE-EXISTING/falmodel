@@ -1,7 +1,6 @@
 library falmodel;
 
-export 'dart:convert';
-export 'dart:async';
+export 'dart:async' hide interface;
 export 'exceptions/exceptions.dart';
 export 'extensions/extensions.dart';
 export 'networks/networks.dart';
