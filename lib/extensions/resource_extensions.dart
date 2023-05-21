@@ -11,7 +11,7 @@ extension ResourceExtension<T extends BlocState> on Stream<T> {
       final status = data.status;
       if (status == BlocStatus.error) {
         if (onError != null && data.error != null) {
-          onError(data.error!, data.stackTrace);
+          onError(data.error!, data.stacktrace);
         }
       }
       onData(data);
@@ -26,6 +26,6 @@ extension ResourceExtension<T extends BlocState> on Stream<T> {
   }
 
   Stream<BlocState<S>> mapToResource<S>(S? Function(T resource) convert) {
-    return map((resource) => resource.copyData(convert(resource)));
+    return map((resource) => resource.copy(convert(resource)));
   }
 }

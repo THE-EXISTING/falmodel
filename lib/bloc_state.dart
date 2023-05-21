@@ -11,13 +11,13 @@ class BlocState<T> with EquatableMixin {
       required this.status,
       this.message,
       this.error,
-      this.stackTrace});
+      this.stacktrace});
 
   final BlocStatus status;
   final T? data;
   final String? message;
   final Object? error;
-  final StackTrace? stackTrace;
+  final StackTrace? stacktrace;
 
   static BlocState<T> init<T>({T? data}) =>
       BlocState<T>._(data: data, status: BlocStatus.init);
@@ -34,7 +34,7 @@ class BlocState<T> with EquatableMixin {
           error: error,
           data: data,
           status: BlocStatus.error,
-          stackTrace: stackTrace);
+          stacktrace: stackTrace);
 
   bool isInit() => status == BlocStatus.init;
 
@@ -57,18 +57,18 @@ class BlocState<T> with EquatableMixin {
   bool hasData() => data != null;
 
   @override
-  List<Object?> get props => [status, data, message, error, stackTrace];
+  List<Object?> get props => [status, data, message, error, stacktrace];
 
   @override
   bool get stringify => true;
 
-  BlocState<A> copyData<A>(A? newData) {
+  BlocState<A> copy<A>(A? newData) {
     return BlocState._(
       data: newData,
       status: status,
       message: message,
       error: error,
-      stackTrace: stackTrace,
+      stacktrace: stacktrace,
     );
   }
 
@@ -79,7 +79,7 @@ class BlocState<T> with EquatableMixin {
       status: status,
       message: message,
       error: error,
-      stackTrace: stackTrace,
+      stacktrace: stacktrace,
     );
   }
 }
