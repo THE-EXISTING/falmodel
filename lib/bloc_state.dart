@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:falmodel/falmodel.dart';
 import 'package:flutter/foundation.dart';
 
-enum BlocStatus { init, loading, success, error }
+enum BlocStatus { init, loading, success, fail }
 
 @immutable
 class BlocState<T> with EquatableMixin {
@@ -28,33 +28,33 @@ class BlocState<T> with EquatableMixin {
   static BlocState<T> success<T>({T? data}) =>
       BlocState<T>._(data: data, status: BlocStatus.success);
 
-  static BlocState<T> exception<T>(
+  static BlocState<T> fail<T>(
           {T? data, Object? error, StackTrace? stackTrace}) =>
       BlocState<T>._(
           error: error,
           data: data,
-          status: BlocStatus.error,
+          status: BlocStatus.fail,
           stacktrace: stackTrace);
 
-  bool isInit() => status == BlocStatus.init;
+  bool get isInit => status == BlocStatus.init;
 
-  bool isLoading() => status == BlocStatus.loading;
+  bool get isLoading => status == BlocStatus.loading;
 
-  bool isNotLoading() => status != BlocStatus.loading;
+  bool get isNotLoading => status != BlocStatus.loading;
 
-  bool isLoadingOrInit() => isLoading() || isInit();
+  bool get isLoadingOrInit => isLoading || isInit;
 
-  bool isSuccess() => status == BlocStatus.success;
+  bool get isSuccess => status == BlocStatus.success;
 
-  bool isNotSuccess() => status != BlocStatus.success;
+  bool get isNotSuccess => status != BlocStatus.success;
 
-  bool isSuccessWithData() => status == BlocStatus.success && data != null;
+  bool get isSuccessWithData => status == BlocStatus.success && data != null;
 
-  bool isError() => status == BlocStatus.error;
+  bool get isFail => status == BlocStatus.fail;
 
-  bool isNotException() => status != BlocStatus.error;
+  bool get isNotFail => status != BlocStatus.fail;
 
-  bool hasData() => data != null;
+  bool get hasData => data != null;
 
   @override
   List<Object?> get props => [status, data, message, error, stacktrace];

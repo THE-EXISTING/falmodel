@@ -1,7 +1,4 @@
 export 'base_request.dart';
-export 'fetcher.dart';
-export 'fetcher_list.dart';
-export 'stream_subscription_wrapper.dart';
 
 export 'https/body/request_body.dart';
 export 'https/body/request_formdata.dart';

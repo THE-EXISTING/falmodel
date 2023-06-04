@@ -9,7 +9,7 @@ extension ResourceExtension<T extends BlocState> on Stream<T> {
     StreamSubscription<T>? subscription;
     subscription = listen((T data) {
       final status = data.status;
-      if (status == BlocStatus.error) {
+      if (status == BlocStatus.fail) {
         if (onError != null && data.error != null) {
           onError(data.error!, data.stacktrace);
         }
