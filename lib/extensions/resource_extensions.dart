@@ -1,5 +1,4 @@
-import 'dart:async';
-import 'package:falmodel/falmodel.dart';
+import 'package:falmodel/lib.dart';
 
 extension ResourceExtension<T extends BlocState> on Stream<T> {
   StreamSubscription<T> listenRealtimeResource({

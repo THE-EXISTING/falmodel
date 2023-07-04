@@ -1,7 +1,7 @@
-import 'package:falmodel/falmodel.dart';
+import 'package:falmodel/lib.dart';
 
-class SocketResponseX extends BaseRequest {
-  const SocketResponseX({
+class SocketResponse extends BaseRequest {
+  const SocketResponse({
     required this.requestOptions,
     required this.data,
   });
@@ -12,7 +12,7 @@ class SocketResponseX extends BaseRequest {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is SocketResponseX &&
+      (other is SocketResponse &&
           runtimeType == other.runtimeType &&
           requestOptions == other.requestOptions &&
           data == other.data);

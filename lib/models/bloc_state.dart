@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:falmodel/falmodel.dart';
+import 'package:falmodel/lib.dart';
 import 'package:flutter/foundation.dart';
 
 enum BlocStatus { init, loading, success, fail }

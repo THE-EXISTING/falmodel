@@ -9,11 +9,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   faltool:
-    path: ../faltool
-  flutter_lints: ^2.0.1
+    git:
+      url: https://github.com/THE-EXISTING/faltool.git
+      ref: develop
+
+  flutter_lints: ^2.0.2
   equatable: ^2.0.5
-  dio: ^5.1.1
+  dio: ^5.2.1+1
 
 dev_dependencies:
   flutter_test:

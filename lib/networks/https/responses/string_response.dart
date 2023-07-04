@@ -1,13 +1,18 @@
-import 'package:falmodel/falmodel.dart';
+import 'package:falmodel/lib.dart';
 
 /// {
 ///   'string': 'string'
 /// }
 
-class StringResponse extends ResponseX<String> {
+class StringResponse extends Response<String> {
   StringResponse({
-    required int statusCode,
-    required String string,
-  }) : super(statusCode: statusCode, data: string);
+    super.data,
+    super.statusCode,
+    super.statusMessage,
+    RequestOptions? requestOptions,
+    super.isRedirect,
+    super.redirects,
+    super.extra,
+    Headers? headers,
+  }) : super(requestOptions: requestOptions ?? RequestOptions());
 }
-

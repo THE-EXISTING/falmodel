@@ -1,7 +1,14 @@
-import 'package:falmodel/falmodel.dart';
+import 'package:falmodel/lib.dart';
 
-class EmptyResponse extends ResponseX<Object> {
+class EmptyResponse extends Response<Object> {
   EmptyResponse({
-    required int statusCode,
-  }) : super(statusCode: statusCode, data: '');
+    super.data = '',
+    super.statusCode,
+    super.statusMessage,
+    RequestOptions? requestOptions,
+    super.isRedirect,
+    super.redirects,
+    super.extra,
+    Headers? headers,
+  }) : super(requestOptions: requestOptions ?? RequestOptions());
 }

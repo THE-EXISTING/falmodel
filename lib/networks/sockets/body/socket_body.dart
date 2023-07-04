@@ -1,8 +1,7 @@
-import 'dart:convert';
-import 'package:falmodel/falmodel.dart';
+import 'package:falmodel/lib.dart';
 
-abstract class SocketBody extends BaseRequest {
-  const SocketBody();
+abstract class BaseSocketBody extends BaseRequest {
+  const BaseSocketBody();
 
   Map<String, Object?> toJson();
 

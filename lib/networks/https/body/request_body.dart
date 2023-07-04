@@ -1,8 +1,7 @@
-import 'dart:convert';
-import 'package:falmodel/falmodel.dart';
+import 'package:falmodel/lib.dart';
 
-abstract class RequestBodyX extends BaseRequest {
-  const RequestBodyX();
+abstract class BaseRequestBody extends BaseRequest {
+  const BaseRequestBody();
 
   Map<String, Object?> toJson();
 

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:falmodel/falmodel.dart';
+import 'package:falmodel/lib.dart';
 
 /// NOTE: Please implement factory method to every sub classes.
 ///

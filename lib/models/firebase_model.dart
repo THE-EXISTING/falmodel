@@ -1,5 +1,5 @@
 
-import 'package:falmodel/falmodel.dart';
+import 'package:falmodel/lib.dart';
 
 abstract class FirebaseModel with EquatableMixin {
   const FirebaseModel();
