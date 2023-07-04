@@ -2,7 +2,7 @@
 import 'package:falmodel/lib.dart';
 
 abstract class TupleState<DATA> with EquatableMixin {
-  TupleState(this.status, this.data);
+  const TupleState(this.status, this.data);
 
   final WidgetDisplayState status;
   final DATA data;
