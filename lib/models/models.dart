@@ -3,5 +3,7 @@ export 'firebase_model.dart';
 export 'bloc_state.dart';
 export 'base_model.dart';
 export 'unique_modelx.dart';
+export 'constants.dart';
+export 'tuple_state.dart';
 
  
