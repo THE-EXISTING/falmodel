@@ -5,5 +5,6 @@ export 'base_model.dart';
 export 'unique_modelx.dart';
 export 'constants.dart';
 export 'tuple_state.dart';
+export 'bloc_data_state.dart';
 
  
