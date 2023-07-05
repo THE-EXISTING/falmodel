@@ -22,7 +22,7 @@ class WidgetDataState<DATA> extends BlocDataState {
   WidgetDataState(this.status, this.data);
 
   final WidgetDisplayState status;
-  final DATA data;
+  final DATA? data;
 
   bool get isInitial => status == WidgetDisplayState.initial;
 
@@ -52,9 +52,9 @@ class WidgetDataState<DATA> extends BlocDataState {
 
   bool get isNotSuccess => !isSuccess;
 
-  R apply<R>(Function2<WidgetDisplayState, DATA, R> f) => f(status, data);
+  R apply<R>(Function2<WidgetDisplayState, DATA?, R> f) => f(status, data);
 
-  WidgetDataState<NT2> mapData<NT2>(Function1<DATA, NT2> f) =>
+  WidgetDataState<NT2> mapData<NT2>(Function1<DATA?, NT2> f) =>
       WidgetDataState(status, f(data));
 
   WidgetDataState<DATA> changeStatus(
