@@ -21,69 +21,69 @@ class WidgetEvent<EVENT> extends BlocDataState {
 class WidgetDataState<DATA> extends BlocDataState {
   WidgetDataState(this.status, this.data);
 
-  final WidgetDisplayState status;
+  final WidgetState status;
   final DATA? data;
 
-  bool get isInitial => status == WidgetDisplayState.initial;
+  bool get isInitial => status == WidgetState.initial;
 
   bool get isNotInitial => !isInitial;
 
-  bool get isNormal => status == WidgetDisplayState.normal;
+  bool get isNormal => status == WidgetState.normal;
 
   bool get isNotNormal => !isNormal;
 
-  bool get isDisabled => status == WidgetDisplayState.disabled;
+  bool get isDisabled => status == WidgetState.disabled;
 
   bool get isNotDisabled => !isDisabled;
 
-  bool get isLoading => status == WidgetDisplayState.loading;
+  bool get isLoading => status == WidgetState.loading;
 
   bool get isNotLoading => !isLoading;
 
-  bool get isEmpty => status == WidgetDisplayState.empty;
+  bool get isEmpty => status == WidgetState.empty;
 
   bool get isNotEmpty => !isEmpty;
 
-  bool get isFail => status == WidgetDisplayState.fail;
+  bool get isFail => status == WidgetState.fail;
 
   bool get isNotFail => !isFail;
 
-  bool get isSuccess => status == WidgetDisplayState.success;
+  bool get isSuccess => status == WidgetState.success;
 
   bool get isNotSuccess => !isSuccess;
 
-  R apply<R>(Function2<WidgetDisplayState, DATA?, R> f) => f(status, data);
+  R apply<R>(Function2<WidgetState, DATA?, R> f) => f(status, data);
 
   WidgetDataState<NT2> mapData<NT2>(Function1<DATA?, NT2> f) =>
       WidgetDataState(status, f(data));
 
   WidgetDataState<DATA> changeStatus(
-          Function1<WidgetDisplayState, WidgetDisplayState> f) =>
+          Function1<WidgetState, WidgetState> f) =>
       WidgetDataState(f(status), data);
 
   WidgetDataState<DATA> changeToInitialStatus() =>
-      WidgetDataState(WidgetDisplayState.initial, data);
+      WidgetDataState(WidgetState.initial, data);
 
   WidgetDataState<DATA> changeToNormalStatus() =>
-      WidgetDataState(WidgetDisplayState.normal, data);
+      WidgetDataState(WidgetState.normal, data);
 
   WidgetDataState<DATA> changeToDisableStatus() =>
-      WidgetDataState(WidgetDisplayState.disabled, data);
+      WidgetDataState(WidgetState.disabled, data);
 
   WidgetDataState<DATA> changeToLoadingStatus() =>
-      WidgetDataState(WidgetDisplayState.loading, data);
+      WidgetDataState(WidgetState.loading, data);
 
   WidgetDataState<DATA> changeToEmptyStatus() =>
-      WidgetDataState(WidgetDisplayState.empty, data);
+      WidgetDataState(WidgetState.empty, data);
 
   WidgetDataState<DATA> changeToSuccessStatus() =>
-      WidgetDataState(WidgetDisplayState.success, data);
+      WidgetDataState(WidgetState.success, data);
 
   WidgetDataState<DATA> changeToFailStatus() =>
-      WidgetDataState(WidgetDisplayState.fail, data);
+      WidgetDataState(WidgetState.fail, data);
 
   WidgetDataState<DATA> copyWith({
-    WidgetDisplayState? status,
+    WidgetState? status,
     DATA? data,
   }) {
     return WidgetDataState<DATA>(

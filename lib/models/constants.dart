@@ -1,5 +1,5 @@
 // Created by Nonthawit on 4/7/2023 AD Lead Flutter at NEXTZY and EXISTING
-enum WidgetDisplayState {
+enum WidgetState {
   initial,
   normal,
   disabled,
@@ -7,4 +7,6 @@ enum WidgetDisplayState {
   empty,
   success,
   fail,
+  focused,
+  pressed,
 }
