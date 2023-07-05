@@ -8,5 +8,6 @@ enum WidgetState {
   success,
   fail,
   focused,
+  hovered,
   pressed,
 }
