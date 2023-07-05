@@ -5,7 +5,7 @@ class Failure extends Equatable {
   final String? code;
   final String? message;
   final String? developMessage;
-  final Exception? exception;
+  final Object? exception;
   final StackTrace? stacktrace;
 
   const Failure({
