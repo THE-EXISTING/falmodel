@@ -42,9 +42,9 @@ class WidgetState<DATA> {
 
   bool get isNotSuccess => !isSuccess;
 
-  R apply<R>(Function2<WidgetStatus, DATA?, R> f) => f(status, data);
+  R apply<R>(Function2<WidgetStatus, DATA, R> f) => f(status, data);
 
-  WidgetState<NT2> mapData<NT2>(Function1<DATA?, NT2> f) =>
+  WidgetState<NT2> mapData<NT2>(Function1<DATA, NT2> f) =>
       WidgetState(status, data: f(data));
 
   WidgetState<DATA> changeStatus(Function1<WidgetStatus, WidgetStatus> f) =>
