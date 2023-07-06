@@ -10,7 +10,7 @@ class WidgetState<DATA> {
   });
 
   final WidgetStatus status;
-  final Object? event;
+  final WidgetEvent? event;
   final DATA? data;
   final bool build;
 
@@ -74,7 +74,7 @@ class WidgetState<DATA> {
   WidgetState<DATA> copyWith({
     WidgetStatus? status,
     DATA? data,
-    Object? event,
+    WidgetEvent? event,
     bool? build,
   }) {
     return WidgetState<DATA>(
@@ -85,8 +85,35 @@ class WidgetState<DATA> {
     );
   }
 
+  WidgetState<DATA> addEvent({
+    required Object event,
+    Object? data,
+  }) {
+    return WidgetState<DATA>(
+      this.status,
+      event: WidgetEvent(event, data),
+      data: this.data,
+      build: this.build,
+    );
+  }
+
   @override
   String toString() {
     return 'WidgetState{status: $status, data: $data, event: $event, build: $build}';
+  }
+}
+
+class WidgetEvent {
+  WidgetEvent(
+    this.event,
+    this.data,
+  );
+
+  final Object event;
+  final Object? data;
+
+  @override
+  String toString() {
+    return 'WidgetEvent{data: $data}';
   }
 }
