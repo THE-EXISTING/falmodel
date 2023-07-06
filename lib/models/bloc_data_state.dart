@@ -1,28 +1,18 @@
 // Created by Nonthawit on 4/7/2023 AD Lead Flutter at NEXTZY and EXISTING
 import 'package:falmodel/lib.dart';
 
-abstract class WidgetState {}
-
-class WidgetEvent<EVENT> extends WidgetState {
-  final EVENT name;
-  final Object? data;
-
-  WidgetEvent(
-    this.name, {
+class WidgetState<DATA> {
+  WidgetState(
+    this.status, {
+    this.event,
     this.data,
+    this.build = true,
   });
 
-  @override
-  String toString() {
-    return 'WidgetEvent{name: $name, data: $data}';
-  }
-}
-
-class WidgetDataState<DATA> extends WidgetState {
-  WidgetDataState(this.status, this.data);
-
   final WidgetStatus status;
+  final Object? event;
   final DATA? data;
+  final bool build;
 
   bool get isInitial => status == WidgetStatus.initial;
 
@@ -54,46 +44,49 @@ class WidgetDataState<DATA> extends WidgetState {
 
   R apply<R>(Function2<WidgetStatus, DATA?, R> f) => f(status, data);
 
-  WidgetDataState<NT2> mapData<NT2>(Function1<DATA?, NT2> f) =>
-      WidgetDataState(status, f(data));
+  WidgetState<NT2> mapData<NT2>(Function1<DATA?, NT2> f) =>
+      WidgetState(status, data: f(data));
 
-  WidgetDataState<DATA> changeStatus(
-          Function1<WidgetStatus, WidgetStatus> f) =>
-      WidgetDataState(f(status), data);
+  WidgetState<DATA> changeStatus(Function1<WidgetStatus, WidgetStatus> f) =>
+      WidgetState(f(status), data: data);
 
-  WidgetDataState<DATA> changeToInitialStatus() =>
-      WidgetDataState(WidgetStatus.initial, data);
+  WidgetState<DATA> changeToInitialStatus() =>
+      WidgetState(WidgetStatus.initial, data: data);
 
-  WidgetDataState<DATA> changeToNormalStatus() =>
-      WidgetDataState(WidgetStatus.normal, data);
+  WidgetState<DATA> changeToNormalStatus() =>
+      WidgetState(WidgetStatus.normal, data: data);
 
-  WidgetDataState<DATA> changeToDisableStatus() =>
-      WidgetDataState(WidgetStatus.disabled, data);
+  WidgetState<DATA> changeToDisableStatus() =>
+      WidgetState(WidgetStatus.disabled, data: data);
 
-  WidgetDataState<DATA> changeToLoadingStatus() =>
-      WidgetDataState(WidgetStatus.loading, data);
+  WidgetState<DATA> changeToLoadingStatus() =>
+      WidgetState(WidgetStatus.loading, data: data);
 
-  WidgetDataState<DATA> changeToEmptyStatus() =>
-      WidgetDataState(WidgetStatus.empty, data);
+  WidgetState<DATA> changeToEmptyStatus() =>
+      WidgetState(WidgetStatus.empty, data: data);
 
-  WidgetDataState<DATA> changeToSuccessStatus() =>
-      WidgetDataState(WidgetStatus.success, data);
+  WidgetState<DATA> changeToSuccessStatus() =>
+      WidgetState(WidgetStatus.success, data: data);
 
-  WidgetDataState<DATA> changeToFailStatus() =>
-      WidgetDataState(WidgetStatus.fail, data);
+  WidgetState<DATA> changeToFailStatus() =>
+      WidgetState(WidgetStatus.fail, data: data);
 
-  WidgetDataState<DATA> copyWith({
+  WidgetState<DATA> copyWith({
     WidgetStatus? status,
     DATA? data,
+    Object? event,
+    bool? build,
   }) {
-    return WidgetDataState<DATA>(
+    return WidgetState<DATA>(
       status ?? this.status,
-      data ?? this.data,
+      event: event, //No copy event
+      data: data ?? this.data,
+      build: build ?? true, //No copy build
     );
   }
 
   @override
   String toString() {
-    return 'WidgetDataState{status: $status, data: $data}';
+    return 'WidgetState{status: $status, data: $data, event: $event, build: $build}';
   }
 }
