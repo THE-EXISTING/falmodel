@@ -8,6 +8,20 @@ class Failure extends Equatable {
   final Object? exception;
   final StackTrace? stacktrace;
 
+  static Failure fromException({
+    String? code,
+    Object? exception,
+    StackTrace? stacktrace,
+  }) {
+    return Failure(
+      code: code,
+      message: exception.toString(),
+      developMessage: exception.toString(),
+      exception: exception,
+      stacktrace: stacktrace,
+    );
+  }
+
   const Failure({
     this.code,
     this.message,
