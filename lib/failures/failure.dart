@@ -8,6 +8,14 @@ class Failure extends Equatable {
   final Object? exception;
   final StackTrace? stacktrace;
 
+  const Failure({
+    this.code,
+    this.message,
+    this.developMessage,
+    this.exception,
+    this.stacktrace,
+  });
+
   static Failure fromException({
     String? code,
     Object? exception,
@@ -21,14 +29,6 @@ class Failure extends Equatable {
       stacktrace: stacktrace,
     );
   }
-
-  const Failure({
-    this.code,
-    this.message,
-    this.developMessage,
-    this.exception,
-    this.stacktrace,
-  });
 
   @override
   List<Object?> get props => [
