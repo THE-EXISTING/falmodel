@@ -71,17 +71,16 @@ class WidgetState<DATA> {
   WidgetState<DATA> changeToFailStatus() =>
       WidgetState(WidgetStatus.fail, data: data);
 
+  /// No copy [event] and [build].
   WidgetState<DATA> copyWith({
     WidgetStatus? status,
     DATA? data,
-    WidgetEvent? event,
     bool? build,
   }) {
     return WidgetState<DATA>(
       status ?? this.status,
-      event: event, //No copy event
       data: data ?? this.data,
-      build: build ?? true, //No copy build
+      build: build ?? true,
     );
   }
 
@@ -114,6 +113,6 @@ class WidgetEvent {
 
   @override
   String toString() {
-    return 'WidgetEvent{data: $data}';
+    return 'WidgetEvent{event: $event, data: $data}';
   }
 }
