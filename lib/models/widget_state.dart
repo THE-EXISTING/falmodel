@@ -5,13 +5,13 @@ class WidgetState<DATA> {
   WidgetState(
     this.status, {
     this.event,
-    this.data,
+    required this.data,
     this.build = true,
   });
 
   final WidgetStatus status;
   final WidgetEvent? event;
-  final DATA? data;
+  final DATA data;
   final bool build;
 
   bool get isInitial => status == WidgetStatus.initial;
