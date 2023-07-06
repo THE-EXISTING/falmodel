@@ -85,10 +85,10 @@ class WidgetState<DATA> {
     );
   }
 
-  WidgetState<DATA> addEvent({
-    required Object event,
+  WidgetState<DATA> addEvent(
+    Object event, [
     Object? data,
-  }) {
+  ]) {
     return WidgetState<DATA>(
       this.status,
       event: WidgetEvent(event, data),
@@ -105,9 +105,9 @@ class WidgetState<DATA> {
 
 class WidgetEvent {
   WidgetEvent(
-    this.event,
+    this.event, [
     this.data,
-  );
+  ]);
 
   final Object event;
   final Object? data;
