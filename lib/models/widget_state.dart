@@ -47,8 +47,11 @@ class WidgetState<DATA> {
   WidgetState<NT2> mapData<NT2>(Function1<DATA, NT2> f) =>
       WidgetState(status, data: f(data));
 
-  WidgetState<DATA> changeStatus(Function1<WidgetStatus, WidgetStatus> f) =>
+  WidgetState<DATA> mapStatus(Function1<WidgetStatus, WidgetStatus> f) =>
       WidgetState(f(status), data: data);
+
+  WidgetState<DATA> toStatus(WidgetStatus status) =>
+      WidgetState(status, data: data);
 
   WidgetState<DATA> get toInitial =>
       WidgetState(WidgetStatus.initial, data: data);
@@ -62,14 +65,12 @@ class WidgetState<DATA> {
   WidgetState<DATA> get toLoading =>
       WidgetState(WidgetStatus.loading, data: data);
 
-  WidgetState<DATA> get toEmpty =>
-      WidgetState(WidgetStatus.empty, data: data);
+  WidgetState<DATA> get toEmpty => WidgetState(WidgetStatus.empty, data: data);
 
   WidgetState<DATA> get toSuccess =>
       WidgetState(WidgetStatus.success, data: data);
 
-  WidgetState<DATA> get toFail =>
-      WidgetState(WidgetStatus.fail, data: data);
+  WidgetState<DATA> get toFail => WidgetState(WidgetStatus.fail, data: data);
 
   /// No copy [event] and [build].
   WidgetState<DATA> copyWith({
