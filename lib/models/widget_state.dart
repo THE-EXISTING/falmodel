@@ -50,25 +50,25 @@ class WidgetState<DATA> {
   WidgetState<DATA> changeStatus(Function1<WidgetStatus, WidgetStatus> f) =>
       WidgetState(f(status), data: data);
 
-  WidgetState<DATA> changeToInitialStatus() =>
+  WidgetState<DATA> get toInitial =>
       WidgetState(WidgetStatus.initial, data: data);
 
-  WidgetState<DATA> changeToNormalStatus() =>
+  WidgetState<DATA> get toNormal =>
       WidgetState(WidgetStatus.normal, data: data);
 
-  WidgetState<DATA> changeToDisableStatus() =>
+  WidgetState<DATA> get toDisabled =>
       WidgetState(WidgetStatus.disabled, data: data);
 
-  WidgetState<DATA> changeToLoadingStatus() =>
+  WidgetState<DATA> get toLoading =>
       WidgetState(WidgetStatus.loading, data: data);
 
-  WidgetState<DATA> changeToEmptyStatus() =>
+  WidgetState<DATA> get toEmpty =>
       WidgetState(WidgetStatus.empty, data: data);
 
-  WidgetState<DATA> changeToSuccessStatus() =>
+  WidgetState<DATA> get toSuccess =>
       WidgetState(WidgetStatus.success, data: data);
 
-  WidgetState<DATA> changeToFailStatus() =>
+  WidgetState<DATA> get toFail =>
       WidgetState(WidgetStatus.fail, data: data);
 
   /// No copy [event] and [build].
