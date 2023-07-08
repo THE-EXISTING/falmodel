@@ -105,15 +105,15 @@ class WidgetState<DATA> {
 
 class WidgetEvent {
   WidgetEvent(
-    this.event, [
+    this.name, [
     this.data,
   ]);
 
-  final Object event;
+  final Object name;
   final Object? data;
 
   @override
   String toString() {
-    return 'WidgetEvent{event: $event, data: $data}';
+    return 'WidgetEvent{event: $name, data: $data}';
   }
 }
