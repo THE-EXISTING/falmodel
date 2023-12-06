@@ -73,6 +73,8 @@ class WidgetState<DATA> {
   WidgetState<DATA> get toFail => WidgetState(WidgetStatus.fail, data: data);
 
   /// No copy [event] and [build].
+  /// [event] if you want to send event to view, please use [addEvent]
+  /// [build] this flag use in view layer.
   WidgetState<DATA> copyWith({
     WidgetStatus? status,
     DATA? data,
@@ -85,6 +87,17 @@ class WidgetState<DATA> {
     );
   }
 
+  /// In your [buildWhen] in BLoC
+  /// Recommend:
+  /// ```
+  /// if (current is WidgetState && current.event != null) {
+  ///   return false;
+  /// } else if (current is WidgetState && current.event == null) {
+  ///   return current.build;
+  /// } else {
+  ///   return true;
+  /// }
+  /// ```
   WidgetState<DATA> addEvent(
     Object event, [
     Object? data,
