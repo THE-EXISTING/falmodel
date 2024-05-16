@@ -1,8 +1,8 @@
 // Created by Nonthawit on 4/7/2023 AD Lead Flutter at NEXTZY and EXISTING
 import 'package:falmodel/lib.dart';
 
-class WidgetState<DATA> {
-  WidgetState(
+class WidgetEventState<DATA> {
+  WidgetEventState(
     this.status, {
     this.event,
     required this.data,
@@ -44,43 +44,43 @@ class WidgetState<DATA> {
 
   R apply<R>(Function2<WidgetStatus, DATA, R> f) => f(status, data);
 
-  WidgetState<NT2> mapData<NT2>(Function1<DATA, NT2> f) =>
-      WidgetState(status, data: f(data));
+  WidgetEventState<NT2> mapData<NT2>(Function1<DATA, NT2> f) =>
+      WidgetEventState(status, data: f(data));
 
-  WidgetState<DATA> mapStatus(Function1<WidgetStatus, WidgetStatus> f) =>
-      WidgetState(f(status), data: data);
+  WidgetEventState<DATA> mapStatus(Function1<WidgetStatus, WidgetStatus> f) =>
+      WidgetEventState(f(status), data: data);
 
-  WidgetState<DATA> toStatus(WidgetStatus status) =>
-      WidgetState(status, data: data);
+  WidgetEventState<DATA> toStatus(WidgetStatus status) =>
+      WidgetEventState(status, data: data);
 
-  WidgetState<DATA> get toInitial =>
-      WidgetState(WidgetStatus.initial, data: data);
+  WidgetEventState<DATA> get toInitial =>
+      WidgetEventState(WidgetStatus.initial, data: data);
 
-  WidgetState<DATA> get toNormal =>
-      WidgetState(WidgetStatus.normal, data: data);
+  WidgetEventState<DATA> get toNormal =>
+      WidgetEventState(WidgetStatus.normal, data: data);
 
-  WidgetState<DATA> get toDisabled =>
-      WidgetState(WidgetStatus.disabled, data: data);
+  WidgetEventState<DATA> get toDisabled =>
+      WidgetEventState(WidgetStatus.disabled, data: data);
 
-  WidgetState<DATA> get toLoading =>
-      WidgetState(WidgetStatus.loading, data: data);
+  WidgetEventState<DATA> get toLoading =>
+      WidgetEventState(WidgetStatus.loading, data: data);
 
-  WidgetState<DATA> get toEmpty => WidgetState(WidgetStatus.empty, data: data);
+  WidgetEventState<DATA> get toEmpty => WidgetEventState(WidgetStatus.empty, data: data);
 
-  WidgetState<DATA> get toSuccess =>
-      WidgetState(WidgetStatus.success, data: data);
+  WidgetEventState<DATA> get toSuccess =>
+      WidgetEventState(WidgetStatus.success, data: data);
 
-  WidgetState<DATA> get toFail => WidgetState(WidgetStatus.fail, data: data);
+  WidgetEventState<DATA> get toFail => WidgetEventState(WidgetStatus.fail, data: data);
 
   /// No copy [event] and [build].
   /// [event] if you want to send event to view, please use [addEvent]
   /// [build] this flag use in view layer.
-  WidgetState<DATA> copyWith({
+  WidgetEventState<DATA> copyWith({
     WidgetStatus? status,
     DATA? data,
     bool? build,
   }) {
-    return WidgetState<DATA>(
+    return WidgetEventState<DATA>(
       status ?? this.status,
       data: data ?? this.data,
       build: build ?? true,
@@ -98,11 +98,11 @@ class WidgetState<DATA> {
   ///   return true;
   /// }
   /// ```
-  WidgetState<DATA> addEvent(
+  WidgetEventState<DATA> addEvent(
     Object event, [
     Object? data,
   ]) {
-    return WidgetState<DATA>(
+    return WidgetEventState<DATA>(
       this.status,
       event: WidgetEvent(event, data),
       data: this.data,
