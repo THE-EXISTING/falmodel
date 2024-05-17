@@ -4,14 +4,14 @@ import 'package:falmodel/lib.dart';
 class Failure extends Equatable {
   final String? code;
   final String? message;
-  final String? developMessage;
+  final String? developerMessage;
   final Object? exception;
   final StackTrace? stacktrace;
 
   const Failure({
     this.code,
     this.message,
-    this.developMessage,
+    this.developerMessage,
     this.exception,
     this.stacktrace,
   });
@@ -24,9 +24,9 @@ class Failure extends Equatable {
     return Failure(
       code: code,
       message: exception.toString(),
-      developMessage: exception.toString(),
+      developerMessage: exception.toString(),
       exception: exception,
-      stacktrace: stacktrace,
+      stacktrace: stacktrace ?? StackTrace.current,
     );
   }
 
@@ -34,7 +34,7 @@ class Failure extends Equatable {
   List<Object?> get props => [
         code,
         message,
-        developMessage,
+        developerMessage,
         exception,
         stacktrace,
       ];

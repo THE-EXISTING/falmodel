@@ -9,5 +9,4 @@ export 'models/models.dart';
 
 export 'package:dio/dio.dart';
 export 'package:faltool/lib.dart';
-export 'package:equatable/equatable.dart';
 
