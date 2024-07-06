@@ -1,5 +1,4 @@
 import 'package:falmodel/lib.dart';
-import 'package:dio/dio.dart';
 
 abstract class BaseFormDataBody extends BaseRequest {
   const BaseFormDataBody();
