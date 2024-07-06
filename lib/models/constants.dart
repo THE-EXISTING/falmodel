@@ -7,7 +7,4 @@ enum WidgetStatus {
   empty,
   success,
   fail,
-  focused,
-  hovered,
-  pressed,
 }
