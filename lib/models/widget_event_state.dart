@@ -22,10 +22,6 @@ class WidgetEventState<DATA> {
 
   bool get isNotNormal => !isNormal;
 
-  bool get isDisabled => status == WidgetStatus.disabled;
-
-  bool get isNotDisabled => !isDisabled;
-
   bool get isLoading => status == WidgetStatus.loading;
 
   bool get isNotLoading => !isLoading;
@@ -58,9 +54,6 @@ class WidgetEventState<DATA> {
 
   WidgetEventState<DATA> get toNormal =>
       WidgetEventState(WidgetStatus.normal, data: data);
-
-  WidgetEventState<DATA> get toDisabled =>
-      WidgetEventState(WidgetStatus.disabled, data: data);
 
   WidgetEventState<DATA> get toLoading =>
       WidgetEventState(WidgetStatus.loading, data: data);

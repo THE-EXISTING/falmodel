@@ -2,7 +2,6 @@
 enum WidgetStatus {
   initial,
   normal,
-  disabled,
   loading,
   empty,
   success,

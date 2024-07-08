@@ -1,6 +1,6 @@
 name: falmodel
 description: A new Flutter package project.
-version: 1.0.4
+version: 1.0.5
 
 environment:
   sdk: '>=3.4.0 <4.0.0'
