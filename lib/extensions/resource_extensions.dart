@@ -1,16 +1,16 @@
 import 'package:falmodel/lib.dart';
 
-extension ResourceExtension<T extends BlocState> on Stream<T> {
+extension ResourceExtension<T extends WidgetEventState> on Stream<T> {
   StreamSubscription<T> listenRealtimeResource({
     required void Function(T data) onData,
     Function? onError,
   }) {
     StreamSubscription<T>? subscription;
     subscription = listen((T data) {
-      final status = data.status;
-      if (status == BlocStatus.fail) {
-        if (onError != null && data.error != null) {
-          onError(data.error!, data.stacktrace);
+      final state = data.state;
+      if (state == FullWidgetState.fail) {
+        if (onError != null && data.data != null) {
+          onError(data.data!);
         }
       }
       onData(data);
@@ -22,9 +22,5 @@ extension ResourceExtension<T extends BlocState> on Stream<T> {
       subscription?.cancel();
     });
     return subscription;
-  }
-
-  Stream<BlocState<S>> mapToResource<S>(S? Function(T resource) convert) {
-    return map((resource) => resource.copy(convert(resource)));
   }
 }
