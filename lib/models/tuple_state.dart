@@ -15,10 +15,6 @@ abstract class TupleState<DATA> with EquatableMixin {
 
   bool get isNotNormal => !isNormal;
 
-  bool get isDisabled => status == WidgetStatus.disabled;
-
-  bool get isNotDisabled => !isDisabled;
-
   bool get isLoading => status == WidgetStatus.loading;
 
   bool get isNotLoading => !isLoading;
@@ -44,8 +40,6 @@ abstract class TupleState<DATA> with EquatableMixin {
   changeToInitialStatus();
 
   changeToNormalStatus();
-
-  changeToDisableStatus();
 
   changeToLoadingStatus();
 

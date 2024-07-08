@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:falmodel/lib.dart';
 import 'package:flutter/foundation.dart';
 
