@@ -95,41 +95,62 @@ class WidgetEventState<DATA> {
           Function1<FullWidgetState, FullWidgetState> f) =>
       WidgetEventState(f(state), data: data);
 
-  WidgetEventState<DATA> toState(FullWidgetState state) =>
-      WidgetEventState(state, data: data);
+  WidgetEventState<DATA> toState(FullWidgetState state,
+          {DATA? data, bool? build}) =>
+      copy(state: state, data: data, build: build);
 
-  WidgetEventState<DATA> get toInitial =>
-      WidgetEventState(FullWidgetState.initial, data: data);
+  WidgetEventState<DATA> toInitial({DATA? data, bool? build}) =>
+      copy(state: FullWidgetState.initial, data: data, build: build);
 
-  WidgetEventState<DATA> get toNormal =>
-      WidgetEventState(FullWidgetState.normal, data: data);
+  WidgetEventState<DATA> toNormal({DATA? data, bool? build}) =>
+      copy(state: FullWidgetState.normal, data: data, build: build);
 
-  WidgetEventState<DATA> get toLoading =>
-      WidgetEventState(FullWidgetState.loading, data: data);
+  WidgetEventState<DATA> toEmpty({DATA? data, bool? build}) =>
+      copy(state: FullWidgetState.empty, data: data, build: build);
 
-  WidgetEventState<DATA> get toEmpty =>
-      WidgetEventState(FullWidgetState.empty, data: data);
+  WidgetEventState<DATA> toHovered({DATA? data, bool? build}) =>
+      copy(state: FullWidgetState.hovered, data: data, build: build);
 
-  WidgetEventState<DATA> get toSuccess =>
-      WidgetEventState(FullWidgetState.success, data: data);
+  WidgetEventState<DATA> toFocused({DATA? data, bool? build}) =>
+      copy(state: FullWidgetState.focused, data: data, build: build);
 
-  WidgetEventState<DATA> get toFail =>
-      WidgetEventState(FullWidgetState.fail, data: data);
+  WidgetEventState<DATA> toPressed({DATA? data, bool? build}) =>
+      copy(state: FullWidgetState.pressed, data: data, build: build);
 
-  /// No copy [event] and [build].
+  WidgetEventState<DATA> toDragged({DATA? data, bool? build}) =>
+      copy(state: FullWidgetState.dragged, data: data, build: build);
+
+  WidgetEventState<DATA> toSelected({DATA? data, bool? build}) =>
+      copy(state: FullWidgetState.selected, data: data, build: build);
+
+  WidgetEventState<DATA> toScrolledUnder({DATA? data, bool? build}) =>
+      copy(state: FullWidgetState.scrolledUnder, data: data, build: build);
+
+  WidgetEventState<DATA> toDisabled({DATA? data, bool? build}) =>
+      copy(state: FullWidgetState.disabled, data: data, build: build);
+
+  WidgetEventState<DATA> toLoading({DATA? data, bool? build}) =>
+      copy(state: FullWidgetState.loading, data: data, build: build);
+
+  WidgetEventState<DATA> toSuccess({DATA? data, bool? build}) =>
+      copy(state: FullWidgetState.success, data: data, build: build);
+
+  WidgetEventState<DATA> toFail({DATA? data, bool? build}) =>
+      copy(state: FullWidgetState.fail, data: data, build: build);
+
+  /// Important: No copy [event] and [build].
   /// [event] if you want to send event to view, please use [addEvent]
   /// [build] this flag use in view layer.
   WidgetEventState<DATA> copy({
     FullWidgetState? state,
     DATA? data,
     bool? build,
-  }) {
-    return WidgetEventState<DATA>(
-      state ?? this.state,
-      data: data ?? this.data,
-      build: build ?? true,
-    );
-  }
+  }) =>
+      WidgetEventState<DATA>(
+        state ?? this.state,
+        data: data ?? this.data,
+        build: build ?? true,
+      );
 
   /// In your [buildWhen] in BLoC
   /// Recommend:
