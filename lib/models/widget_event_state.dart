@@ -88,12 +88,12 @@ class WidgetEventState<DATA> {
 
   R apply<R>(Function2<FullWidgetState, DATA, R> f) => f(state, data);
 
-  WidgetEventState<NT2> mapData<NT2>(Function1<DATA, NT2> f) =>
-      WidgetEventState(state, data: f(data));
+  WidgetEventState<NT2> mapData<NT2>(Function1<DATA, NT2> f, {bool? build}) =>
+      WidgetEventState(state, data: f(data), build: build ?? true);
 
-  WidgetEventState<DATA> mapState(
-          Function1<FullWidgetState, FullWidgetState> f) =>
-      WidgetEventState(f(state), data: data);
+  WidgetEventState<DATA> mapState(Function1<FullWidgetState, FullWidgetState> f,
+          {bool? build}) =>
+      WidgetEventState(f(state), data: data, build: build ?? true);
 
   WidgetEventState<DATA> toState(FullWidgetState state,
           {DATA? data, bool? build}) =>
@@ -138,7 +138,7 @@ class WidgetEventState<DATA> {
   WidgetEventState<DATA> toFail({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.fail, data: data, build: build);
 
-  /// Important: No copy [event] and [build].
+  /// Important: Do not copy [event] because event must use that one time.
   /// [event] if you want to send event to view, please use [addEvent]
   /// [build] this flag use in view layer.
   WidgetEventState<DATA> copy({
