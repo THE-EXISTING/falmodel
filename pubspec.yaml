@@ -1,6 +1,6 @@
 name: falmodel
 description: A new Flutter package project.
-version: 1.2.5
+version: 1.2.6
 
 environment:
   sdk: '>=3.4.0 <4.0.0'
@@ -12,7 +12,7 @@ dependencies:
   faltool:
     git:
       url: https://github.com/THE-EXISTING/faltool.git
-      ref: 1.0.11
+      ref: 1.0.12
 
   #PLATFORM: All
   dio: ^5.7.0
