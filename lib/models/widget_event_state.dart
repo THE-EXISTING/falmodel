@@ -15,6 +15,7 @@ enum FullWidgetState {
   disabled,
   loading,
   success,
+  cancel,
   fail,
 }
 
@@ -33,56 +34,34 @@ class WidgetEventState<DATA> {
   final bool build;
 
   bool get isInitial => state == FullWidgetState.initial;
-
   bool get isNormal => state == FullWidgetState.normal;
-
   bool get isEmpty => state == FullWidgetState.empty;
-
   bool get isHovered => state == FullWidgetState.hovered;
-
   bool get isFocused => state == FullWidgetState.focused;
-
   bool get isPressed => state == FullWidgetState.pressed;
-
   bool get isDragged => state == FullWidgetState.dragged;
-
   bool get isSelected => state == FullWidgetState.selected;
-
   bool get isScrolledUnder => state == FullWidgetState.scrolledUnder;
-
   bool get isDisabled => state == FullWidgetState.disabled;
-
   bool get isLoading => state == FullWidgetState.loading;
-
   bool get isSuccess => state == FullWidgetState.success;
-
   bool get isFail => state == FullWidgetState.fail;
+  bool get isCancel => state == FullWidgetState.cancel;
 
   bool get isNotInitial => !isInitial;
-
   bool get isNotNormal => !isNormal;
-
   bool get isNotEmpty => !isEmpty;
-
   bool get isNotHovered => !isHovered;
-
   bool get isNotFocused => !isFocused;
-
   bool get isNotPressed => !isPressed;
-
   bool get isNotDragged => !isDragged;
-
   bool get isNotSelected => !isSelected;
-
   bool get isNotScrolledUnder => !isScrolledUnder;
-
   bool get isNotDisabled => !isDisabled;
-
   bool get isNotLoading => !isLoading;
-
   bool get isNotSuccess => !isSuccess;
-
   bool get isNotFail => !isFail;
+  bool get isNotCancel => !isCancel;
 
   bool get hasData => data != null;
 
@@ -134,6 +113,9 @@ class WidgetEventState<DATA> {
 
   WidgetEventState<DATA> toSuccess({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.success, data: data, build: build);
+
+  WidgetEventState<DATA> toCancel({DATA? data, bool? build}) =>
+      copy(state: FullWidgetState.cancel, data: data, build: build);
 
   WidgetEventState<DATA> toFail({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.fail, data: data, build: build);
