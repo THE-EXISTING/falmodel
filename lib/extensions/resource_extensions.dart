@@ -1,6 +1,6 @@
 import 'package:falmodel/lib.dart';
 
-extension ResourceExtension<T extends WidgetEventState> on Stream<T> {
+extension ResourceExtension<T extends WidgetStateEvent> on Stream<T> {
   StreamSubscription<T> listenRealtimeResource({
     required void Function(T data) onData,
     Function? onError,

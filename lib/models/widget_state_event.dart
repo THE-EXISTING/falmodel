@@ -20,8 +20,8 @@ enum FullWidgetState {
 }
 
 @immutable
-class WidgetEventState<DATA> {
-  const WidgetEventState(
+class WidgetStateEvent<DATA> {
+  const WidgetStateEvent(
     this.state, {
     this.event,
     required this.data,
@@ -29,6 +29,10 @@ class WidgetEventState<DATA> {
   });
 
   final FullWidgetState state;
+
+  /// Purpose to [WidgetEvent] for communicate BLoC --> Widget
+  /// Important: [event] not copy because event must use for one time.
+  /// if you want to send [event] to view, please use [addEvent]
   final WidgetEvent? event;
   final DATA data;
   final bool build;
@@ -67,68 +71,68 @@ class WidgetEventState<DATA> {
 
   R apply<R>(Function2<FullWidgetState, DATA, R> f) => f(state, data);
 
-  WidgetEventState<NT2> mapData<NT2>(Function1<DATA, NT2> f, {bool? build}) =>
-      WidgetEventState(state, data: f(data), build: build ?? true);
+  WidgetStateEvent<NT2> mapData<NT2>(Function1<DATA, NT2> f, {bool? build}) =>
+      WidgetStateEvent(state, data: f(data), build: build ?? true);
 
-  WidgetEventState<DATA> mapState(Function1<FullWidgetState, FullWidgetState> f,
+  WidgetStateEvent<DATA> mapState(Function1<FullWidgetState, FullWidgetState> f,
           {bool? build}) =>
-      WidgetEventState(f(state), data: data, build: build ?? true);
+      WidgetStateEvent(f(state), data: data, build: build ?? true);
 
-  WidgetEventState<DATA> toState(FullWidgetState state,
+  WidgetStateEvent<DATA> toState(FullWidgetState state,
           {DATA? data, bool? build}) =>
       copy(state: state, data: data, build: build);
 
-  WidgetEventState<DATA> toInitial({DATA? data, bool? build}) =>
+  WidgetStateEvent<DATA> toInitial({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.initial, data: data, build: build);
 
-  WidgetEventState<DATA> toNormal({DATA? data, bool? build}) =>
+  WidgetStateEvent<DATA> toNormal({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.normal, data: data, build: build);
 
-  WidgetEventState<DATA> toEmpty({DATA? data, bool? build}) =>
+  WidgetStateEvent<DATA> toEmpty({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.empty, data: data, build: build);
 
-  WidgetEventState<DATA> toHovered({DATA? data, bool? build}) =>
+  WidgetStateEvent<DATA> toHovered({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.hovered, data: data, build: build);
 
-  WidgetEventState<DATA> toFocused({DATA? data, bool? build}) =>
+  WidgetStateEvent<DATA> toFocused({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.focused, data: data, build: build);
 
-  WidgetEventState<DATA> toPressed({DATA? data, bool? build}) =>
+  WidgetStateEvent<DATA> toPressed({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.pressed, data: data, build: build);
 
-  WidgetEventState<DATA> toDragged({DATA? data, bool? build}) =>
+  WidgetStateEvent<DATA> toDragged({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.dragged, data: data, build: build);
 
-  WidgetEventState<DATA> toSelected({DATA? data, bool? build}) =>
+  WidgetStateEvent<DATA> toSelected({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.selected, data: data, build: build);
 
-  WidgetEventState<DATA> toScrolledUnder({DATA? data, bool? build}) =>
+  WidgetStateEvent<DATA> toScrolledUnder({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.scrolledUnder, data: data, build: build);
 
-  WidgetEventState<DATA> toDisabled({DATA? data, bool? build}) =>
+  WidgetStateEvent<DATA> toDisabled({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.disabled, data: data, build: build);
 
-  WidgetEventState<DATA> toLoading({DATA? data, bool? build}) =>
+  WidgetStateEvent<DATA> toLoading({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.loading, data: data, build: build);
 
-  WidgetEventState<DATA> toSuccess({DATA? data, bool? build}) =>
+  WidgetStateEvent<DATA> toSuccess({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.success, data: data, build: build);
 
-  WidgetEventState<DATA> toCancel({DATA? data, bool? build}) =>
+  WidgetStateEvent<DATA> toCancel({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.cancel, data: data, build: build);
 
-  WidgetEventState<DATA> toFail({DATA? data, bool? build}) =>
+  WidgetStateEvent<DATA> toFail({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.fail, data: data, build: build);
 
   /// Important: Do not copy [event] because event must use that one time.
   /// [event] if you want to send event to view, please use [addEvent]
   /// [build] this flag use in view layer.
-  WidgetEventState<DATA> copy({
+  WidgetStateEvent<DATA> copy({
     FullWidgetState? state,
     DATA? data,
     bool? build,
   }) =>
-      WidgetEventState<DATA>(
+      WidgetStateEvent<DATA>(
         state ?? this.state,
         data: data ?? this.data,
         build: build ?? true,
@@ -145,11 +149,11 @@ class WidgetEventState<DATA> {
   ///   return true;
   /// }
   /// ```
-  WidgetEventState<DATA> addEvent(
+  WidgetStateEvent<DATA> addEvent(
     Object event, [
     Object? data,
   ]) =>
-      WidgetEventState<DATA>(
+      WidgetStateEvent<DATA>(
         this.state,
         event: WidgetEvent(event, data),
         data: this.data,
@@ -158,7 +162,7 @@ class WidgetEventState<DATA> {
 
   @override
   String toString() {
-    return 'WidgetEventState{state: $state, data: $data, event: $event, build: $build}';
+    return 'WidgetStateEvent{state: $state, data: $data, event: $event, build: $build}';
   }
 }
 
