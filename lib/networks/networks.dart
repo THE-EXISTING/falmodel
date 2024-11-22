@@ -5,7 +5,6 @@ export 'https/body/request_formdata.dart';
 export 'https/responses/empty_data_response.dart';
 export 'https/responses/bool_response.dart';
 export 'https/responses/string_response.dart';
-export 'https/responses/response_data.dart';
 
 export 'sockets/socket_options.dart';
 export 'sockets/body/socket_body.dart';

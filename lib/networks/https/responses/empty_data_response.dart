@@ -9,6 +9,6 @@ class EmptyResponse extends Response<Object> {
     super.isRedirect,
     super.redirects,
     super.extra,
-    Headers? headers,
+    super.headers,
   }) : super(requestOptions: requestOptions ?? RequestOptions());
 }

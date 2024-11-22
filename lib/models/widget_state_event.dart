@@ -16,6 +16,7 @@ enum FullWidgetState {
   loading,
   success,
   cancel,
+  warning,
   fail,
 }
 
@@ -50,6 +51,7 @@ class WidgetStateEvent<DATA> {
   bool get isLoading => state == FullWidgetState.loading;
   bool get isSuccess => state == FullWidgetState.success;
   bool get isFail => state == FullWidgetState.fail;
+  bool get isWarning => state == FullWidgetState.warning;
   bool get isCancel => state == FullWidgetState.cancel;
 
   bool get isNotInitial => !isInitial;
@@ -65,6 +67,7 @@ class WidgetStateEvent<DATA> {
   bool get isNotLoading => !isLoading;
   bool get isNotSuccess => !isSuccess;
   bool get isNotFail => !isFail;
+  bool get isNotWarning => !isWarning;
   bool get isNotCancel => !isCancel;
 
   bool get hasData => data != null;
@@ -120,6 +123,9 @@ class WidgetStateEvent<DATA> {
 
   WidgetStateEvent<DATA> toCancel({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.cancel, data: data, build: build);
+
+  WidgetStateEvent<DATA> toWarning({DATA? data, bool? build}) =>
+      copy(state: FullWidgetState.warning, data: data, build: build);
 
   WidgetStateEvent<DATA> toFail({DATA? data, bool? build}) =>
       copy(state: FullWidgetState.fail, data: data, build: build);

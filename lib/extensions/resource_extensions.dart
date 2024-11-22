@@ -9,8 +9,8 @@ extension ResourceExtension<T extends WidgetStateEvent> on Stream<T> {
     subscription = listen((T data) {
       final state = data.state;
       if (state == FullWidgetState.fail) {
-        if (onError != null && data.data != null) {
-          onError(data.data!);
+        if (onError != null) {
+          onError(data.data);
         }
       }
       onData(data);

@@ -15,6 +15,7 @@ extension FullWidgetStateExtension on FullWidgetState {
   bool get isLoading => this == FullWidgetState.loading;
   bool get isSuccess => this == FullWidgetState.success;
   bool get isFail => this == FullWidgetState.fail;
+  bool get isWarning => this == FullWidgetState.warning;
 
   bool get isNotInitial => !isInitial;
   bool get isNotNormal => !isNormal;
@@ -29,4 +30,5 @@ extension FullWidgetStateExtension on FullWidgetState {
   bool get isNotLoading => !isLoading;
   bool get isNotSuccess => !isSuccess;
   bool get isNotFail => !isFail;
+  bool get isNotWarning => !isWarning;
 }
