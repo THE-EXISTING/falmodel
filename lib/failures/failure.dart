@@ -16,9 +16,23 @@ class Failure extends Equatable {
     this.stacktrace,
   });
 
-  static Failure fromException({
+  static Failure fromError(
+    Error error, {
     String? code,
-    Object? exception,
+    StackTrace? stacktrace,
+  }) {
+    return Failure(
+      code: code,
+      message: error.toString(),
+      developerMessage: error.toString(),
+      exception: error,
+      stacktrace: stacktrace ?? error.stackTrace ?? StackTrace.current,
+    );
+  }
+
+  static Failure fromException(
+    Object exception, {
+    String? code,
     StackTrace? stacktrace,
   }) {
     return Failure(
