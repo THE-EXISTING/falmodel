@@ -7,6 +7,7 @@ class Failure extends Equatable {
   final String? developerMessage;
   final Object? exception;
   final StackTrace? stacktrace;
+  final List<Failure>? failureList;
 
   const Failure({
     this.code,
@@ -14,12 +15,14 @@ class Failure extends Equatable {
     this.developerMessage,
     this.exception,
     this.stacktrace,
+    this.failureList,
   });
 
-  static Failure fromError(
+  factory Failure.fromError(
     Error error, {
     String? code,
     StackTrace? stacktrace,
+    List<Failure>? failureList,
   }) {
     return Failure(
       code: code,
@@ -27,13 +30,15 @@ class Failure extends Equatable {
       developerMessage: error.toString(),
       exception: error,
       stacktrace: stacktrace ?? error.stackTrace ?? StackTrace.current,
+      failureList: failureList,
     );
   }
 
-  static Failure fromException(
+  factory Failure.fromException(
     Object exception, {
     String? code,
     StackTrace? stacktrace,
+    List<Failure>? failureList,
   }) {
     return Failure(
       code: code,
@@ -41,6 +46,7 @@ class Failure extends Equatable {
       developerMessage: exception.toString(),
       exception: exception,
       stacktrace: stacktrace ?? StackTrace.current,
+      failureList: failureList,
     );
   }
 
@@ -51,5 +57,6 @@ class Failure extends Equatable {
         developerMessage,
         exception,
         stacktrace,
+        failureList,
       ];
 }
